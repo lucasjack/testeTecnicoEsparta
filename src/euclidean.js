@@ -4,18 +4,17 @@ var EuclideanSolution = /** @class */ (function () {
     }
     EuclideanSolution.prototype.solution = function (chocolates, interval) {
         var i = -interval;
-        var chocNumber = [];
+        var wrapper = [];
         while (true) {
             i += interval;
             if (i > chocolates - 1) {
                 i -= chocolates;
             }
-            for (var j = 0; j < chocNumber.length; j++) {
-                if (i === chocNumber[j]) {
-                    return chocNumber.length;
-                }
+            var eatenWrapper = wrapper.filter(function (x) { return x === i; }).length;
+            if (eatenWrapper) {
+                return wrapper.length;
             }
-            chocNumber.push(i);
+            wrapper.push(i);
         }
     };
     return EuclideanSolution;

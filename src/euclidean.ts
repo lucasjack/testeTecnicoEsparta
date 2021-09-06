@@ -1,18 +1,21 @@
 class EuclideanSolution {
   solution(chocolates: number, interval: number) {
-    let i = -interval;
-    let chocNumber = [];
+    let i: number = -interval;
+    const wrapper: Array<number> = [];
+
     while (true) {
       i += interval;
       if (i > chocolates - 1) {
         i -= chocolates;
       }
-      for (let j = 0; j < chocNumber.length; j++) {
-        if (i === chocNumber[j]) {
-          return chocNumber.length;
-        }
+
+      const eatenWrapper: number = wrapper.filter((x) => x === i).length;
+
+      if (eatenWrapper) {
+        return wrapper.length;
       }
-      chocNumber.push(i);
+
+      wrapper.push(i);
     }
   }
 }

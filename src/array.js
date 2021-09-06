@@ -3,11 +3,11 @@ var ArraySolution = /** @class */ (function () {
     function ArraySolution() {
     }
     ArraySolution.prototype.verifyNumberInArray = function (num, arr) {
-        for (var j in arr) {
-            if (arr[j].valor === num) {
+        arr.map(function (j) {
+            if (j.valor === num) {
                 return true;
             }
-        }
+        });
         return false;
     };
     ArraySolution.prototype.checkOcurencies = function (Objarr) {
@@ -18,24 +18,22 @@ var ArraySolution = /** @class */ (function () {
         }
     };
     ArraySolution.prototype.solution = function (arr) {
+        var _this = this;
         var arrObj = [];
-        for (var i = 0; i < arr.length; i++) {
+        arr.map(function (i) {
             if (i === 0) {
-                arrObj.push({ valor: arr[i], ocorrencias: 0 });
+                arrObj.push({ valor: i, ocorrencias: 0 });
             }
             else {
-                if (!this.verifyNumberInArray(arr[i], arrObj)) {
-                    arrObj.push({ valor: arr[i], ocorrencias: 0 });
+                if (!_this.verifyNumberInArray(i, arrObj)) {
+                    arrObj.push({ valor: i, ocorrencias: 0 });
                 }
             }
-        }
-        for (var j in arrObj) {
-            for (var i = 0; i < arr.length; i++) {
-                if (arrObj[j].valor === arr[i]) {
-                    arrObj[j].ocorrencias += 1;
-                }
-            }
-        }
+        });
+        arrObj.map(function (item) {
+            var ocurrencyNum = arr.filter(function (x) { return item.valor === x; }).length;
+            item.ocorrencias = ocurrencyNum;
+        });
         return this.checkOcurencies(arrObj);
     };
     return ArraySolution;

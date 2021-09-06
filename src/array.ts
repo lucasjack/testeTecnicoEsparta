@@ -3,11 +3,12 @@ type ArrNumObj = Array<NumberObj>;
 
 class ArraySolution {
   verifyNumberInArray(num: number, arr: Array<NumberObj>): boolean {
-    for (let j in arr) {
-      if (arr[j].valor === num) {
+    arr.map((j) => {
+      if (j.valor === num) {
         return true;
       }
-    }
+    });
+
     return false;
   }
 
@@ -21,22 +22,22 @@ class ArraySolution {
 
   solution(arr: Array<number>) {
     let arrObj: ArrNumObj = [];
-    for (let i = 0; i < arr.length; i++) {
+
+    arr.map((i) => {
       if (i === 0) {
-        arrObj.push({ valor: arr[i], ocorrencias: 0 });
+        arrObj.push({ valor: i, ocorrencias: 0 });
       } else {
-        if (!this.verifyNumberInArray(arr[i], arrObj)) {
-          arrObj.push({ valor: arr[i], ocorrencias: 0 });
+        if (!this.verifyNumberInArray(i, arrObj)) {
+          arrObj.push({ valor: i, ocorrencias: 0 });
         }
       }
-    }
-    for (let j in arrObj) {
-      for (let i = 0; i < arr.length; i++) {
-        if (arrObj[j].valor === arr[i]) {
-          arrObj[j].ocorrencias += 1;
-        }
-      }
-    }
+    });
+
+    arrObj.map((item) => {
+      const ocurrencyNum: number = arr.filter((x) => item.valor === x).length;
+      item.ocorrencias = ocurrencyNum;
+    });
+
     return this.checkOcurencies(arrObj);
   }
 }

@@ -3,25 +3,19 @@ var DistinctSolution = /** @class */ (function () {
     function DistinctSolution() {
     }
     DistinctSolution.prototype.verifyNumberInArray = function (num, arr) {
-        for (var j in arr) {
-            if (arr[j] === num) {
-                return true;
-            }
-        }
-        return false;
+        return arr.includes(num);
     };
     DistinctSolution.prototype.solution = function (arr) {
+        var _this = this;
         var distNum = [];
-        for (var i = 0; i < arr.length; i++) {
+        arr.map(function (i) {
             if (i === 0) {
-                distNum.push(arr[i]);
+                distNum.push(i);
             }
-            else {
-                if (!this.verifyNumberInArray(arr[i], distNum)) {
-                    distNum.push(arr[i]);
-                }
+            else if (!_this.verifyNumberInArray(i, distNum)) {
+                distNum.push(i);
             }
-        }
+        });
         return distNum.length;
     };
     return DistinctSolution;
