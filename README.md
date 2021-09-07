@@ -1,0 +1,3 @@
+# Projeto
+
+A pasta todo_list, contem os scripts utilizados para fazer a terceira etapa do processo sletivo, este projeto foi feito em react e teve seu deploy feito no vercel, onde pode se encontrar o projeto rodando atraves deste link: [https://todo-list-murex-phi.vercel.app/](https://todo-list-murex-phi.vercel.app/). A utilização do site e muito simples e intuitiva, para se adicionar uma tarefa basta digitar de qual se trata na caixa de texto e pressionar enter, para se concluir uma tarefa basta clicar no icone ✔️ e para deletar clique no icone 🗑️ para retornar tarefas concluidas clique no icone 🔙, e estas são todas as funcionalidades do projeto.
